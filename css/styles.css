@@ -1,0 +1,140 @@
+/* 基本布局 */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:#f5f7fb; color:#222; }
+.container { max-width:1100px; margin:0 auto; padding:20px; }
+.site-header { background: #fff; border-bottom:1px solid #e6e9ef; }
+.site-header .container { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; }
+.logo { font-size:1.2rem; color:#111; }
+.cart { cursor:pointer; font-size:1rem; }
+
+.products-grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap:18px; margin-top:20px; }
+.card { background:#fff; border-radius:8px; box-shadow:0 1px 3px rgba(15,15,15,0.05); overflow:hidden; display:flex; flex-direction:column; }
+.card img { width:100%; height:140px; object-fit:cover; }
+.card-body { padding:12px; flex:1; display:flex; flex-direction:column; }
+.product-title { font-weight:600; margin-bottom:6px; font-size:0.95rem; }
+.product-price { color:#e55353; font-weight:700; margin-bottom:8px; }
+.btn { background:#2563eb; color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; }
+.btn:active { transform:translateY(1px); }
+
+.cart-drawer { position:fixed; right:0; top:0; bottom:0; width:320px; background:#fff; box-shadow:-6px 0 24px rgba(10,10,10,0.08); padding:18px; transform:translateX(0); z-index:200; }
+.cart-drawer.hidden { transform:translateX(110%); transition:transform .25s ease; }
+.cart-drawer h2 { margin-bottom:12px; }
+.cart-items { list-style:none; max-height:60vh; overflow:auto; margin-bottom:12px; }
+.cart-item { display:flex; gap:8px; align-items:center; padding:8px 0; border-bottom:1px dashed #eee; }
+.cart-item img { width:56px; height:44px; object-fit:cover; border-radius:6px; }
+.cart-item .meta { flex:1; }
+.cart-item .meta .name { font-size:0.9rem; }
+.cart-item .qty { font-size:0.85rem; color:#666; }
+.cart-summary { display:flex; align-items:center; justify-content:space-between; margin-top:8px; }
+.close { margin-top:12px; background:transparent; border:none; color:#666; cursor:pointer; }
+
+@media (max-width:640px){ .cart-drawer{ width:100%; } .products-grid{ grid-template-columns: repeat(2,1fr);} }
+/* 新年学习计划动画样式 */
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 80vh;
+}
+.welcome-title {
+	font-size: 2.5rem;
+	color: #e55353;
+	margin-bottom: 32px;
+	opacity: 0;
+	animation: fadeInTitle 1.2s ease forwards;
+}
+@keyframes fadeInTitle {
+	from { opacity: 0; transform: translateY(-40px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+.plan-list {
+	list-style: none;
+	padding: 0;
+	margin-bottom: 28px;
+}
+.plan-item {
+	background: #fffbe6;
+	color: #e55353;
+	font-size: 1.3rem;
+	margin: 12px 0;
+	padding: 12px 32px;
+	border-radius: 24px;
+	box-shadow: 0 2px 12px rgba(229,83,83,0.08);
+	opacity: 0;
+	transform: translateY(30px);
+	animation: fadeInItem 0.8s ease forwards;
+}
+.plan-item:nth-child(1) { animation-delay: 0.5s; }
+.plan-item:nth-child(2) { animation-delay: 0.8s; }
+.plan-item:nth-child(3) { animation-delay: 1.1s; }
+.plan-item:nth-child(4) { animation-delay: 1.4s; }
+.plan-item:nth-child(5) { animation-delay: 1.7s; }
+@keyframes fadeInItem {
+	from { opacity: 0; transform: translateY(30px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+.wish {
+	font-size: 1.4rem;
+	color: #2563eb;
+	margin-top: 24px;
+	animation: wishFlash 2s infinite alternate;
+}
+@keyframes wishFlash {
+	from { color: #2563eb; }
+	to { color: #e55353; }
+}
+/* 互动按钮样式 */
+.plan-actions {
+	margin-bottom: 18px;
+	display: flex;
+	gap: 12px;
+	justify-content: center;
+}
+.action-btn {
+	background: #2563eb;
+	color: #fff;
+	border: none;
+	padding: 8px 18px;
+	border-radius: 18px;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+.action-btn:hover {
+	background: #e55353;
+}
+/* 高亮计划项样式 */
+.plan-item.highlight {
+	background: #ffe0e0;
+	color: #2563eb;
+	box-shadow: 0 0 16px #e5535355;
+	border: 2px solid #e55353;
+	transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+/* 操作提示弹窗样式 */
+.msg-box {
+	position: fixed;
+	top: 32px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: #2563eb;
+	color: #fff;
+	padding: 12px 32px;
+	border-radius: 24px;
+	font-size: 1.1rem;
+	box-shadow: 0 2px 16px #2563eb33;
+	z-index: 9999;
+	opacity: 0;
+	animation: fadeInMsg 0.3s forwards;
+}
+@keyframes fadeInMsg {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+.action-btn.active {
+	background: #e55353 !important;
+	transition: background 0.2s;
+}
+}
